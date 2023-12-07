@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversion Tool</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Arial", sans-serif;
+      background-image: url('vector.jpg');
+      background-color: #003366; /* Ateneo Blue */
+      color: #ffffff; /* White text */
+      text-align: center;
+      margin: 20px;
+    }
+
+    header {
+      background-color: #ffffff;
+      color: #003366;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #003366;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #003366;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #003366;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+    }
+
+    button {
+      padding: 10px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+    <h1>Conversion Tool</h1>
+</header>
+
+  <nav>
+    <a href ="index.html">HOME</a>
+    <div class="dropdown">
+    <div style="display: flex; justify-content: center;">
+    <span class="dropdown-btn">TOOLS <i class="fas fa-caret-down"></i></span>
+    <div class="dropdown-content">
+        <a href="conversion.html">Conversion</a>
+        <a href="incomecalculator.html">Income Tax Calculator</a>
+        <a href="factorial.html">Factorial</a>
+        <a href="payroll.html">Payroll</a>
+    </div>
+</div>
+
+    </div>
+
+      </div>
+    </div>
+  </nav>
+  
+<div class="content">
+    <div class="calculator">
+        <h2>Income Tax Calculator</h2>
+        <label for="income">Enter your annual income:</label>
+        <input type="number" id="income" placeholder="Enter your income">
+        <button onclick="calculateTax()">Calculate Tax</button>
+        <p id="result"></p>
+    </div>
+</div>
+
+<script>
+    function calculateTax() {
+        const income = parseFloat(document.getElementById('income').value);
+
+        if (isNaN(income) || income < 0) {
+            document.getElementById('result').textContent = 'Please enter a valid income.';
+            return;
+        }
+
+        let tax = 0;
+
+        if (income <= 10000) {
+            tax = 0.05 * income;
+        } else if (income <= 50000) {
+            tax = 0.1 * income;
+        } else {
+            tax = 0.2 * income;
+        }
+
+        document.getElementById('result').textContent = `Your income tax is ₱${tax.toFixed(2)}`;
+    }
+</script>
+</body>
+</html>

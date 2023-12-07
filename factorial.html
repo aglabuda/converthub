@@ -1,0 +1,173 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversion Tool</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Arial", sans-serif;
+      background-image: url('vector.jpg');
+      background-color: #003366; /* Ateneo Blue */
+      color: #ffffff; /* White text */
+      text-align: center;
+      margin: 20px;
+    }
+
+    header {
+      background-color: #ffffff;
+      color: #003366;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #003366;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #003366;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #003366;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+    }
+
+    button {
+      padding: 10px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Conversion Tool</h1>
+</header>
+
+ <nav>
+    <a href ="index.html">HOME</a>
+    <div class="dropdown">
+    <div style="display: flex; justify-content: center;">
+    <span class="dropdown-btn">TOOLS <i class="fas fa-caret-down"></i></span>
+    <div class="dropdown-content">
+        <a href="conversion.html">Conversion</a>
+        <a href="incomecalculator.html">Income Tax Calculator</a>
+        <a href="factorial.html">Factorial</a>
+        <a href="payroll.html">Payroll</a>
+    </div>
+</div>
+
+    </div>
+
+      </div>
+    </div>
+  </nav>
+
+<div class="content">
+
+  <h2>Loop Operations</h2>
+
+  <label for="inputNumber">Enter a number (n): </label>
+  <input type="number" id="inputNumber">
+  <button onclick="performOperations()">Calculate</button>
+
+
+  <div id="output">
+    <!-- Output will be displayed here -->
+  </div>
+  </div>
+
+  <script>
+    function performOperations() {
+      // Get the input value
+      var n = parseInt(document.getElementById('inputNumber').value);
+
+      // Validate input
+      if (isNaN(n) || n < 0) {
+        alert("Please enter a non-negative integer.");
+        return;
+      }
+
+      // 1. Calculate the nth factorial using a While Loop
+      var factorial = 1;
+      var i = 1;
+      while (i <= n) {
+        factorial *= i;
+        i++;
+      }
+
+      // 2. Calculate the sum of the first n numbers using a Do While Loop
+      var sum = 0;
+      var j = 1;
+      do {
+        sum += j;
+        j++;
+      } while (j <= n);
+
+      // 3. Calculate the average of the first n numbers using a For Loop
+      var average = 0;
+      for (var k = 1; k <= n; k++) {
+        average += k;
+      }
+      average /= n;
+
+      // Display the results
+      var outputDiv = document.getElementById('output');
+      outputDiv.innerHTML = `
+        <p>The ${n}th factorial is: ${factorial}</p>
+        <p>The sum of the first ${n} numbers is: ${sum}</p>
+        <p>The average of the first ${n} numbers is: ${average}</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>

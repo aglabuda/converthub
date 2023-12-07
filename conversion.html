@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversion Tool</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Arial", sans-serif;
+      background-image: url('vector.jpg');
+      background-color: #003366; /* Ateneo Blue */
+      color: #ffffff; /* White text */
+      text-align: center;
+      margin: 20px;
+    }
+
+    header {
+      background-color: #ffffff;
+      color: #003366;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #003366;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #003366;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #003366;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+    }
+
+    button {
+      padding: 10px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Conversion Tool</h1>
+</header>
+
+  <nav>
+    <a href ="index.html">HOME</a>
+    <div class="dropdown">
+    <div style="display: flex; justify-content: center;">
+    <span class="dropdown-btn">TOOLS <i class="fas fa-caret-down"></i></span>
+    <div class="dropdown-content">
+        <a href="conversion.html">Conversion</a>
+        <a href="incomecalculator.html">Income Tax Calculator</a>
+        <a href="factorial.html">Factorial</a>
+        <a href="payroll.html">Payroll</a>
+    </div>
+</div>
+
+    </div>
+
+      </div>
+    </div>
+  </nav>
+
+<div class="content">
+  <h2>Farenheit/Celsius</h2>
+
+  <label for="celsius">Celsius:</label>
+  <input type="number" id="celsius">
+
+  <button onclick="convertCelsiusToFahrenheit()">Convert to Fahrenheit</button>
+
+  <br>
+
+  <label for="fahrenheit">Fahrenheit:</label>
+  <input type="number" id="fahrenheit">
+
+  <button onclick="convertFahrenheitToCelsius()">Convert to Celsius</button>
+
+  <br>
+<h2>Meters/Feet</h2>
+  <br>
+  <label for="meters">Meters:</label>
+  <input type="number" id="meters">
+
+  <button onclick="convertMetersToFeet()">Convert to Feet</button>
+
+  <br>
+
+  <label for="feet">Feet:</label>
+  <input type="number" id="feet">
+
+  <button onclick="convertFeetToMeters()">Convert to Meters</button>
+
+  <div id="result"></div>
+
+  <script>
+    function convertCelsiusToFahrenheit() {
+      const celsius = parseFloat(document.getElementById('celsius').value);
+      const fahrenheit = (celsius * 9/5) + 32;
+      document.getElementById('fahrenheit').value = fahrenheit.toFixed(2);
+      document.getElementById('result').innerText = `${celsius}°C is ${fahrenheit.toFixed(2)}°F`;
+    }
+
+    function convertFahrenheitToCelsius() {
+      const fahrenheit = parseFloat(document.getElementById('fahrenheit').value);
+      const celsius = (fahrenheit - 32) * 5/9;
+      document.getElementById('celsius').value = celsius.toFixed(2);
+      document.getElementById('result').innerText = `${fahrenheit}°F is ${celsius.toFixed(2)}°C`;
+    }
+
+    function convertMetersToFeet() {
+      const meters = parseFloat(document.getElementById('meters').value);
+      const feet = meters * 3.28084;
+      document.getElementById('feet').value = feet.toFixed(2);
+      document.getElementById('result').innerText = `${meters} meters is ${feet.toFixed(2)} feet`;
+    }
+
+    function convertFeetToMeters() {
+      const feet = parseFloat(document.getElementById('feet').value);
+      const meters = feet / 3.28084;
+      document.getElementById('meters').value = meters.toFixed(2);
+      document.getElementById('result').innerText = `${feet} feet is ${meters.toFixed(2)} meters`;
+    }
+  </script>
+</div>
+
+</body>
+</html>

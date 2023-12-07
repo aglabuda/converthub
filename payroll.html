@@ -1,0 +1,216 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversion Tool</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Arial", sans-serif;
+      background-image: url('vector.jpg');
+      background-color: #003366; /* Ateneo Blue */
+      color: #ffffff; /* White text */
+      text-align: center;
+      margin: 20px;
+    }
+
+    header {
+      background-color: #ffffff;
+      color: #003366;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #003366;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #003366;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #003366;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+    }
+
+    button {
+      padding: 10px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+    <h1>Conversion Tool</h1>
+</header>
+
+ <nav>
+    <a href ="index.html">HOME</a>
+    <div class="dropdown">
+    <div style="display: flex; justify-content: center;">
+    <span class="dropdown-btn">TOOLS <i class="fas fa-caret-down"></i></span>
+    <div class="dropdown-content">
+        <a href="conversion.html">Conversion</a>
+        <a href="incomecalculator.html">Income Tax Calculator</a>
+        <a href="factorial.html">Factorial</a>
+        <a href="payroll.html">Payroll</a>
+    </div>
+</div>
+
+    </div>
+
+      </div>
+    </div>
+  </nav>
+
+     <div class="content">
+        <h1>Employee Payroll System</h1>
+      
+
+  <label for="employeeName">Employee Name:</label>
+  <input type="text" id="employeeName"><br>
+  
+  <label for="daysWorked">Days Worked:</label>
+  <input type="number" id="daysWorked"><br>
+  
+  <label for="dailyRate">Daily Rate:</label>
+  <input type="number" id="dailyRate"><br>
+  
+  <label for="deductionAmount">Deduction Amount:</label>
+  <input type="number" id="deductionAmount"><br>
+  
+  <button onclick="addEmployee()">Add Employee</button><br>
+
+  <label for="deleteLineNumber">Delete Employee (Enter Line Number):</label>
+  <input type="number" id="deleteLineNumber">
+  <button onclick="deleteEmployee()">Delete Employee</button>
+
+  <table id="payrollTable">
+    <tr>
+      <th>No.</th>
+      <th>Employee Name</th>
+      <th>Days Worked</th>
+      <th>Daily Rate</th>
+      <th>Gross Pay</th>
+      <th>Deduction Amount</th>
+      <th>Net Pay</th>
+    </tr>
+  </table>
+
+  <script>
+    let payrollList = [];
+
+    function addEmployee() {
+      const employeeName = document.getElementById('employeeName').value;
+      const daysWorked = parseInt(document.getElementById('daysWorked').value);
+      const dailyRate = parseFloat(document.getElementById('dailyRate').value);
+      const deductionAmount = parseFloat(document.getElementById('deductionAmount').value);
+
+      const grossPay = daysWorked * dailyRate;
+      const netPay = grossPay - deductionAmount;
+
+      const lineNumber = payrollList.length + 1;
+
+      const employee = {
+        lineNumber,
+        employeeName,
+        daysWorked,
+        dailyRate,
+        grossPay,
+        deductionAmount,
+        netPay
+      };
+
+      payrollList.push(employee);
+      updateTable();
+    }
+
+    function deleteEmployee() {
+      const lineNumberToDelete = parseInt(document.getElementById('deleteLineNumber').value);
+
+      if (lineNumberToDelete >= 1 && lineNumberToDelete <= payrollList.length) {
+        payrollList.splice(lineNumberToDelete - 1, 1);
+        updateTable();
+      } else {
+        alert('Invalid Line Number to delete.');
+      }
+    }
+
+    function updateTable() {
+      const table = document.getElementById('payrollTable');
+      table.innerHTML = `
+        <tr>
+          <th>No.</th>
+          <th>Employee Name</th>
+          <th>Days Worked</th>
+          <th>Daily Rate</th>
+          <th>Gross Pay</th>
+          <th>Deduction Amount</th>
+          <th>Net Pay</th>
+        </tr>
+      `;
+
+      payrollList.forEach(employee => {
+        const row = table.insertRow();
+        const { lineNumber, employeeName, daysWorked, dailyRate, grossPay, deductionAmount, netPay } = employee;
+
+        const values = [lineNumber, employeeName, daysWorked, dailyRate, grossPay, deductionAmount, netPay];
+
+        values.forEach((value, index) => {
+          const cell = row.insertCell(index);
+          cell.textContent = value;
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>

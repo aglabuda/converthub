@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ConvertHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Arial", sans-serif;
+      background-image: url('vector.jpg');
+      color: #ffffff; /* White text */
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #ffffff;
+      color: #003366;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #003366;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1rem;
+      transition: color 0.3s ease-in-out;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #003366;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #003366;
+    }
+
+    .assignment-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .assignment-list li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav a {
+        margin: 10px 0;
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>ConvertHub</h1>
+  </header>
+
+ <nav>
+    <a href ="index.html">HOME</a>
+    <div class="dropdown">
+    <div style="display: flex; justify-content: center;">
+    <span class="dropdown-btn">TOOLS <i class="fas fa-caret-down"></i></span>
+    <div class="dropdown-content">
+        <a href="conversion.html">Conversion</a>
+        <a href="incomecalculator.html">Income Tax Calculator</a>
+        <a href="factorial.html">Factorial</a>
+        <a href="payroll.html">Payroll</a>
+    </div>
+</div>
+
+    </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h2>About:</h2>
+    <ul class="assignment-list">
+      <li>Welcome to ConvertHub!</li>
+
+<li>🌡️ Celsius to Fahrenheit and Fahrenheit to Celsius: Convert temperatures effortlessly with our user-friendly tool. Navigate between Celsius and Fahrenheit with ease and precision.</li>
+<li>📏Meters to Feet and Feet to Meters: Explore the world of lengths and heights by seamlessly converting between meters and feet. Your go-to solution for spatial transformations.</li>
+<li>💰 Income Tax Calculator:
+    Take the stress out of tax season with our user-friendly Income Tax Calculator. Quickly estimate your income tax liability and gain valuable insights into your financial planning.</li>    
+<li>🔄 Factorial, Sum, and Average Calculators:
+    Unleash the power of mathematics with our calculators designed to handle a variety of scenarios. Whether you need to find the factorial using a while loop, calculate the sum with a do-while loop, or determine the average through a for loop - we've got you covered for the first N natural numbers.</li>   
+<li>📊 Simple Payroll:
+    Managing payroll shouldn't be complicated. Our Simple Payroll system is designed for small businesses and freelancers, ensuring that you can focus on what you do best while we take care of the numbers.</li>   
+<li>🚀 Why Choose Us?
+
+<li>Accuracy: Our calculators are meticulously crafted to provide precise results, ensuring you can trust the numbers.</li>
+<li>Ease of Use: We prioritize user experience, creating tools that are intuitive and accessible for everyone.</li>
+<li>Reliability: From temperature conversions to complex mathematical calculations, our tools are built to handle diverse needs.</li></li>   
+<li>👩‍💻 About Angelo Abuda:
+As the creator of this platform, I am passionate about simplifying everyday tasks and making complex calculations accessible to all. I understand the importance of accurate and efficient tools in various aspects of life.</li>    
+ <br>
+ <li>Ready to embark on a journey of numerical exploration? Start using ConvertHub's Toolbox today! Your gateway to hassle-free conversions and calculations.</li>   
+    </ul> 
+  </div>
+
+</body>
+
+</html>
